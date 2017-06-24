@@ -1,4 +1,4 @@
-package pff.com.ipchat.model;
+package com.pff.ipchat.model;
 
 public class Interlocutor
 {

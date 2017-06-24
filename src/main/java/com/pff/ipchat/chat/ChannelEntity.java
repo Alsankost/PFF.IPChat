@@ -1,4 +1,4 @@
-package pff.com.ipchat.chat;
+package com.pff.ipchat.chat;
 
 public class ChannelEntity
 {

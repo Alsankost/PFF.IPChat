@@ -1,9 +1,9 @@
-package pff.com.ipchat;
+package com.pff.ipchat;
+
+import com.pff.ipchat.chat.Channel;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import pff.com.ipchat.chat.Channel;
 
 public abstract class ChannelVersionsManager
 {
