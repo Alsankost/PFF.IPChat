@@ -2,8 +2,8 @@ package com.pff.ipchat.model;
 
 public class Interlocutor
 {
-	private String sid;
-	private String name;
+	private final String sid;
+	private final String name;
 	
 	public Interlocutor(String sid, String name)
 	{

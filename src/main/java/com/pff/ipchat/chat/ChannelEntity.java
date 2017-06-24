@@ -5,8 +5,8 @@ package com.pff.ipchat.chat;
  * From com.pff.ipchat.chat
  */
 public class ChannelEntity {
-	private String sid = null; //Specific id
-	private String channel_version = null; //String for version channel in CVM
+	private final String sid; //Specific id
+	private final String channel_version; //String for version channel in CVM
 	private String other_data = null;
 	
 	public ChannelEntity(String sid, String cv) {

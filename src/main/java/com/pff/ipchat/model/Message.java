@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class Message
 {
-	private String interlocutor_sid;
-	private String data;
-	private LocalDate date;
+	private final String interlocutor_sid;
+	private final String data;
+	private final LocalDate date;
 	
 	public Message(String isid, String data, LocalDate date)
 	{
