@@ -10,7 +10,7 @@ public interface Channel
 {
 	List<Interlocutor> getInterlocutors(ChannelEntity entity);
 
-	List<Message> getMessages(ChannelEntity entity, LocalDate upLimit);
+	List<Message> getHistoryMessages(ChannelEntity entity, LocalDate upLimit);
 
 	boolean send(ChannelEntity entity, String data);
 }

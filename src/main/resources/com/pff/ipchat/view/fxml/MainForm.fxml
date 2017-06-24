@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="1000.0"
+            stylesheets="@../css/LightTheme.css" xmlns="http://javafx.com/javafx/8.0.111"
+            fx:controller="com.pff.ipchat.view.MainFormController">
+    <center>
+        <SplitPane dividerPositions="0.24949899799599198" prefHeight="160.0" prefWidth="200.0"
+                   BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <JFXButton layoutX="216.0" layoutY="37.0" prefHeight="29.0" prefWidth="29.0" text="+"
+                                   AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0"/>
+                        <JFXTextField layoutX="17.0" layoutY="39.0" prefHeight="25.0" prefWidth="179.0"
+                                      AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="50.0"
+                                      AnchorPane.topAnchor="45.0">
+                            <padding>
+                                <Insets right="10.0"/>
+                            </padding>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                        </JFXTextField>
+                        <JFXButton layoutX="208.0" layoutY="4.0" prefHeight="25.0" prefWidth="27.0" text="&lt;"
+                                   AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="7.0"/>
+                        <JFXTreeView layoutX="-1.0" layoutY="76.0" minHeight="-Infinity" minWidth="-Infinity"
+                                     prefHeight="605.0" prefWidth="248.0" AnchorPane.bottomAnchor="43.0"
+                                     AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0"
+                                     AnchorPane.topAnchor="80.0"/>
+                        <JFXButton layoutX="106.0" layoutY="765.0" prefHeight="25.0" prefWidth="45.0" text="Info"
+                                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="100.0"
+                                   AnchorPane.rightAnchor="100.0"/>
+                        <JFXButton layoutX="11.0" layoutY="765.0" prefHeight="25.0" prefWidth="70.0" text="Remove"
+                                   AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"/>
+                        <JFXButton layoutX="177.0" layoutY="765.0" prefHeight="25.0" prefWidth="70.0" text="Rename"
+                                   AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+                        <Label layoutX="16.0" layoutY="8.0" text="&gt; Name" AnchorPane.leftAnchor="10.0"
+                               AnchorPane.topAnchor="7.0"/>
+                        <Separator layoutX="-1.0" layoutY="44.0" prefWidth="200.0" AnchorPane.leftAnchor="-1.0"
+                                   AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="38.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="798.0" prefWidth="756.0">
+                    <children>
+                        <TabPane layoutX="189.0" layoutY="243.0" prefHeight="200.0" prefWidth="200.0"
+                                 tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0"
+                                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <tabs>
+                                <Tab text="Welcome">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                            <children>
+                                                <JFXTextArea layoutX="20.0" prefHeight="769.0" prefWidth="726.0"
+                                                             text="Hello!!! This is chat for ip networks!So far, nothing works this fucking chat!!!But you can find the interfaceBut you can find the interface!If you do not like something - go to dick! "
+                                                             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                                             AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                                            </children>
+                                        </AnchorPane>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </center>
+    <top>
+        <JFXToolbar prefHeight="28.0" prefWidth="1000.0" BorderPane.alignment="CENTER"/>
+    </top>
+</BorderPane>

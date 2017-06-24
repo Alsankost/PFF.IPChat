@@ -1,0 +1,16 @@
+JFXButton {
+    -jfx-button-type: FLAT;
+    -fx-background-color: #F5F5F5;
+}
+
+AnchorPane {
+    -fx-background-color: #CFD8DC;
+}
+
+JFXTextArea {
+    -fx-background-color: #F5F5F5;
+}
+
+JFXToolbar {
+    -fx-background-color: #F5F5F5;
+}
