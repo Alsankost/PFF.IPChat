@@ -1,8 +1,4 @@
 package com.pff.ipchat;
-/**
- * Created by Good_Pudge(Senya) on 24.06.2017.
- * From com.pff.ipchat
- */
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
