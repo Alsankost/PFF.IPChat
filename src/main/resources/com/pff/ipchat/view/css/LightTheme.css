@@ -1,16 +1,12 @@
-JFXButton {
-    -jfx-button-type: FLAT;
-    -fx-background-color: #F5F5F5;
+{
+    -fx-highlight-fill: transparent
+;
 }
 
 AnchorPane {
     -fx-background-color: #CFD8DC;
 }
 
-JFXTextArea {
-    -fx-background-color: #F5F5F5;
-}
-
-JFXToolbar {
+JFXToolbar, JFXTextArea, JFXButton {
     -fx-background-color: #F5F5F5;
 }

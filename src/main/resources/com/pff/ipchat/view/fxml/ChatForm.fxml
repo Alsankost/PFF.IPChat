@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pff.ipchat.view.ChatFormController"
+            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111">
+    <center>
+        <SplitPane dividerPositions="0.7224080267558528" prefHeight="160.0" prefWidth="200.0"
+                   BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <JFXTextField layoutX="11.0" layoutY="359.0" prefHeight="25.0" prefWidth="349.0"
+                                      AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                                      AnchorPane.rightAnchor="70.0"/>
+                        <JFXButton layoutX="363.0" layoutY="363.0" text="Send" AnchorPane.bottomAnchor="10.0"
+                                   AnchorPane.rightAnchor="15.0"/>
+                        <JFXListView layoutX="61.0" layoutY="-37.0" prefHeight="355.0" prefWidth="431.0"
+                                     AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="-1.0"
+                                     AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="-1.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <JFXTreeTableView layoutX="-42.0" layoutY="-9.0" prefHeight="398.0" prefWidth="163.0"
+                                          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

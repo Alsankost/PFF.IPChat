@@ -1,0 +1,14 @@
+{
+    -fx-text-fill: #CFD8DC
+;
+    -fx-highlight-fill: transparent
+;
+}
+
+AnchorPane {
+    -fx-background-color: #757575;
+}
+
+JFXToolbar, JFXTextArea, JFXButton {
+    -fx-background-color: #616161;
+}
