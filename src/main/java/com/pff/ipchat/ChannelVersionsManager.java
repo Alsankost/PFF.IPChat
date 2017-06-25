@@ -9,9 +9,9 @@ import java.util.Map;
 
 public abstract class ChannelVersionsManager {
 	private static final Map<String, Channel> MAP = new HashMap<>();
-	
-	public static boolean register(String version, Channel channel) {
-		if (channel == null || version == null || version.length() == 0 || MAP.containsKey(version)) return false;
+
+    public static boolean register(String version, Channel channel) {
+        if (channel == null || version == null || version.length() == 0 || MAP.containsKey(version)) return false;
 		MAP.put(version, channel);
 		return true;
 	}
@@ -27,9 +27,9 @@ public abstract class ChannelVersionsManager {
 	public static boolean removeByChannel(Channel channel) {
 		return MAP.values().remove(channel);
 	}
-	
-	public static List<String> getVersions() {
-		List<String> temp = new ArrayList<>();
+
+    public static List<String> getVersions() {
+        List<String> temp = new ArrayList<>();
 		temp.addAll(MAP.keySet());
 		return (temp.size() > 0) ? temp : null;
  	}
