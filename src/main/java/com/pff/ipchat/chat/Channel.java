@@ -9,20 +9,39 @@ import java.util.List;
 public interface Channel
 {
 	//get API
-    List<Interlocutor> getInterlocutors(ChannelEntity entity);
+	public List<Interlocutor> getInterlocutors(ChannelEntity entity);
 
-    List<Message> getHistoryMessages(ChannelEntity entity, LocalDate upLimit);
+	public List<Message> getHistoryMessages(ChannelEntity entity, LocalDate upLimit);
 
 	//set API
-    boolean send(ChannelEntity entity, String data);
+	public boolean send(ChannelEntity entity, String data);
 
-    //local
-    boolean save(ChannelEntity entity);
+	//local
+	public boolean save(ChannelEntity entity);
 
-    boolean load(ChannelEntity entity);
+	public boolean load(ChannelEntity entity);
 
-    //build
-    ChannelEntity create(String channel_name);
+	//build
+	public ChannelEntity create(String channel_name);
 
-    ChannelEntity join(String sid);
+	public ChannelEntity join(String sid);
+    
+	//connection
+	public void connect(ChannelEntity entity);
+	/*
+	 * this method will be invoked when you try to connect
+	 * to a channel from the channel list (when you open chat)
+	*/
+	
+	public void disconnect(ChannelEntity entity);
+	/*
+	 * this method will be called when the disconnection with
+	 * the channel (when the chat was closed or when the button is pressed to detach)
+	*/
+	
+	public boolean isConnection(ChannelEntity entity);
+	/*
+	 * this method need for getting status of channel from connection,
+	 * calling to check status from GUI and other subsystems
+	*/
 }

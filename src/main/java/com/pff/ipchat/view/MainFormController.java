@@ -69,6 +69,24 @@ public class MainFormController implements Initializable {
             public ChannelEntity join(String sid) {
                 return null;
             }
+
+			@Override
+			public void connect(ChannelEntity entity) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void disconnect(ChannelEntity entity) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public boolean isConnection(ChannelEntity entity) {
+				// TODO Auto-generated method stub
+				return false;
+			}
         });
         ChannelVersionsManager.register("Byte", new Channel() {
             @Override
@@ -105,6 +123,24 @@ public class MainFormController implements Initializable {
             public ChannelEntity join(String sid) {
                 return null;
             }
+
+			@Override
+			public void connect(ChannelEntity entity) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void disconnect(ChannelEntity entity) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public boolean isConnection(ChannelEntity entity) {
+				// TODO Auto-generated method stub
+				return false;
+			}
         });
         //TEST
 
