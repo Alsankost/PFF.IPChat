@@ -13,3 +13,7 @@ AnchorPane {
 JFXToolbar, JFXTextArea, JFXButton {
     -fx-background-color: #F5F5F5;
 }
+
+JFXTreeView {
+	 -fx-background-color: none;
+}
