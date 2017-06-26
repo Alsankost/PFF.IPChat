@@ -4,7 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="1000.0"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" prefHeight="800.0" prefWidth="1000.0"
             stylesheets="@../css/LightTheme.css" xmlns="http://javafx.com/javafx/8.0.111"
             fx:controller="com.pff.ipchat.view.MainFormController">
     <center>
@@ -13,12 +13,12 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <JFXButton fx:id="channelButton" layoutX="216.0" layoutY="37.0"
-                                   onAction="#onChannelButtonAction" prefHeight="60.0" prefWidth="29.0" text="+"
+                        <JFXButton fx:id="connectButton" layoutX="161.0" layoutY="45.0"
+                                   onAction="#onConnectChannelAction" prefHeight="25.0" prefWidth="65.0" text="Connect"
                                    AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0"/>
                         <JFXTextField fx:id="channelTextField" layoutX="17.0" layoutY="39.0" prefHeight="25.0"
-                                      prefWidth="179.0" promptText="Channel name or ID" AnchorPane.leftAnchor="10.0"
-                                      AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
+                                      prefWidth="150.0" promptText="Channel name or ID" AnchorPane.leftAnchor="10.0"
+                                      AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="45.0">
                             <padding>
                                 <Insets right="10.0"/>
                             </padding>
@@ -43,9 +43,12 @@
                                AnchorPane.topAnchor="7.0"/>
                         <Separator layoutX="-1.0" layoutY="44.0" prefWidth="200.0" AnchorPane.leftAnchor="-1.0"
                                    AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="38.0"/>
-                        <JFXComboBox fx:id="versionsComboBox" layoutX="95.0" layoutY="81.0" promptText="Channel version"
-                                     AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="50.0"
-                                     AnchorPane.topAnchor="80.0"/>
+                        <JFXComboBox fx:id="versionsComboBox" layoutX="95.0" layoutY="81.0" prefHeight="25.0"
+                                     prefWidth="150.0" promptText="Channel version" AnchorPane.leftAnchor="10.0"
+                                     AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="80.0"/>
+                        <JFXButton fx:id="createButton" layoutX="171.0" layoutY="80.0" onAction="#onCreateChannelAction"
+                                   prefHeight="25.0" prefWidth="65.0" text="Create" AnchorPane.rightAnchor="10.0"
+                                   AnchorPane.topAnchor="80.0"/>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="798.0" prefWidth="756.0">
@@ -59,7 +62,7 @@
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                             <children>
                                                 <JFXTextArea layoutX="20.0" prefHeight="769.0" prefWidth="726.0"
-                                                             text="Hello!!! This is chat for ip networks!So far, nothing works this fucking chat!!!But you can find the interfaceBut you can find the interface!If you do not like something - go to dick! "
+                                                             text="Helsdfsdlo!!! This is chat for ip networks!So far, nothing works this fucking chat!!!But you can find the interfaceBut you can find the interface!If you do not like something - go to dick! fsd"
                                                              AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                                             </children>

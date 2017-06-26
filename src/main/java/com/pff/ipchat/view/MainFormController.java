@@ -1,7 +1,7 @@
 package com.pff.ipchat.view;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeView;
 import com.pff.ipchat.ChannelVersionsManager;
@@ -11,6 +11,7 @@ import com.pff.ipchat.model.Interlocutor;
 import com.pff.ipchat.model.Message;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -28,7 +29,7 @@ public class MainFormController implements Initializable {
     private JFXTextField channelTextField;
 
     @FXML
-    private JFXButton channelButton;
+    private BorderPane rootPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -107,32 +108,36 @@ public class MainFormController implements Initializable {
         });
         //TEST
 
-        //Get versions
-        //The first element need, if you want connect to channel
-        versionsComboBox.getItems().add("");
         versionsComboBox.getItems().addAll(ChannelVersionsManager.getVersions());
-
     }
 
-    public void onChannelButtonAction() {
-        boolean isTextEmpty = channelTextField.getText().isEmpty();
-        Object item = versionsComboBox.getSelectionModel().getSelectedItem();
-        boolean isItemSelected = (item != null) && !item.equals("");
-
-        if ((isTextEmpty && !isItemSelected) || (isTextEmpty && isItemSelected)) {
-            //You should choose channel version to create and enter channel name or enter channel ID to connect
-        } else if (!isTextEmpty && isItemSelected) {
-            //Create new channel
-            ChannelEntity channelEntity = ChannelVersionsManager.get(versionsComboBox
-                    .getSelectionModel()
-                    .getSelectedItem()
-                    .toString())
-                    .create(channelTextField.getText());
-        } else {
-            //Connect to channel
-            ChannelEntity channelEntity = ChannelVersionsManager
-                    .get("Hello") //*when get info about channel*
-                    .join(channelTextField.getText());
+    public void onCreateChannelAction() {
+        Channel channel = checkAndReturn();
+        if (channel != null) {
+            ChannelEntity channelEntity = channel.create(channelTextField.getText());
         }
+    }
+
+    public void onConnectChannelAction() {
+        Channel channel = checkAndReturn();
+        if (channel != null) {
+            ChannelEntity channelEntity = channel.join(channelTextField.getText());
+        }
+    }
+
+    private Channel checkAndReturn() {
+        final boolean isTextEmpty = channelTextField.getText().isEmpty();
+        final Object item = versionsComboBox.getSelectionModel().getSelectedItem();
+        final boolean isItemSelected = item != null;
+
+        if (!isTextEmpty && isItemSelected) {
+            return ChannelVersionsManager.get(item.toString());
+        }
+
+        final JFXSnackbar snackbar = new JFXSnackbar(rootPane);
+        snackbar.show("You need choose channel version. Enter channel SID to connect or channel name to create",
+                "OK", 5000, event -> snackbar.close());
+
+        return null;
     }
 }

@@ -1,8 +1,14 @@
 {
     -fx-text-fill: #FFFFFF
 ;
-    -fx-highlight-fill: transparent
-;
+}
+
+.jfx-snackbar-content {
+    -fx-background-color: #FFFFFF;
+}
+
+.jfx-snackbar-toast {
+    -fx-text-fill: #616161;
 }
 
 AnchorPane {
