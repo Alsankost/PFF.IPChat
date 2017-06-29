@@ -2,12 +2,14 @@ package com.pff.ipchat.chat;
 
 public class ChannelEntity {
 	private final String sid; //Specific id
+	private final String name;
 	private final String channel_version; //String for version channel in CVM
 	private String other_data = null;
 
     public ChannelEntity(Builder builder) {
         this.sid = builder.sid;
         this.channel_version = builder.channel_version;
+        this.name = builder.name;
     }
 
     public String getSID() {
@@ -17,6 +19,7 @@ public class ChannelEntity {
     public static class Builder {
         private String sid;
         private String channel_version;
+        private String name;
 
         public Builder setSid(String sid) {
             this.sid = sid;
@@ -26,6 +29,11 @@ public class ChannelEntity {
         public Builder setChannelVersion(String channelVersion) {
             this.channel_version = channelVersion;
             return this;
+        }
+        
+        public Builder setName(String n) {
+        	this.name = n;
+        	return this;
         }
 
         public ChannelEntity build() {
@@ -46,4 +54,8 @@ public class ChannelEntity {
 	{
 		this.other_data = data;
 	}
+	
+	public String getName() {
+    	return name;
+    }
 }

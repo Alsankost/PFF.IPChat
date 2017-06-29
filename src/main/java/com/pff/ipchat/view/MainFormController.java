@@ -60,16 +60,6 @@ public class MainFormController implements Initializable {
                 return false;
             }
 
-            @Override
-            public ChannelEntity create(String channel_name) {
-                return null;
-            }
-
-            @Override
-            public ChannelEntity join(String sid) {
-                return null;
-            }
-
 			@Override
 			public void connect(ChannelEntity entity) {
 				// TODO Auto-generated method stub
@@ -86,6 +76,18 @@ public class MainFormController implements Initializable {
 			public boolean isConnection(ChannelEntity entity) {
 				// TODO Auto-generated method stub
 				return false;
+			}
+
+			@Override
+			public ChannelEntity create(String channel_name, String owner_name) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public ChannelEntity join(String sid, String user_name) {
+				// TODO Auto-generated method stub
+				return null;
 			}
         });
         ChannelVersionsManager.register("Byte", new Channel() {
@@ -114,16 +116,6 @@ public class MainFormController implements Initializable {
                 return false;
             }
 
-            @Override
-            public ChannelEntity create(String channel_name) {
-                return null;
-            }
-
-            @Override
-            public ChannelEntity join(String sid) {
-                return null;
-            }
-
 			@Override
 			public void connect(ChannelEntity entity) {
 				// TODO Auto-generated method stub
@@ -141,6 +133,18 @@ public class MainFormController implements Initializable {
 				// TODO Auto-generated method stub
 				return false;
 			}
+
+			@Override
+			public ChannelEntity create(String channel_name, String owner_name) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public ChannelEntity join(String sid, String user_name) {
+				// TODO Auto-generated method stub
+				return null;
+			}
         });
         //TEST
 
@@ -150,14 +154,14 @@ public class MainFormController implements Initializable {
     public void onCreateChannelAction() {
         Channel channel = checkAndReturn();
         if (channel != null) {
-            ChannelEntity channelEntity = channel.create(channelTextField.getText());
+            ChannelEntity channelEntity = channel.create(channelTextField.getText(), "test");
         }
     }
 
     public void onConnectChannelAction() {
         Channel channel = checkAndReturn();
         if (channel != null) {
-            ChannelEntity channelEntity = channel.join(channelTextField.getText());
+            ChannelEntity channelEntity = channel.join(channelTextField.getText(), "test");
         }
     }
 
