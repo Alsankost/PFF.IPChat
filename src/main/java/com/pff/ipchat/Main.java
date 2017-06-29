@@ -8,13 +8,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import javax.swing.JFrame;
+import com.pff.ipchat.model.channels.DummyChannel;
 
 public class Main extends Application {
 
 	private static Main mainApp;
 	
     public static void main(String[] args) {
+    	//Registration channel versions
+    	ChannelVersionsManager.register("Dummy Channel v0.0.1", new DummyChannel());
+    	
         launch(args);
     }
     
@@ -32,11 +35,6 @@ public class Main extends Application {
         primaryStage.setWidth(mainForm.getWidth());
         primaryStage.setHeight(mainForm.getHeight());
         primaryStage.show();
-        
-        JFrame frame = new JFrame("Test");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setSize(200,200);
-		frame.setVisible(true);
     }
     
     public Main() {

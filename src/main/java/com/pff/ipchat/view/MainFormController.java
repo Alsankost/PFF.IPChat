@@ -7,18 +7,26 @@ import com.jfoenix.controls.JFXTreeView;
 import com.pff.ipchat.ChannelVersionsManager;
 import com.pff.ipchat.chat.Channel;
 import com.pff.ipchat.chat.ChannelEntity;
-import com.pff.ipchat.model.Interlocutor;
-import com.pff.ipchat.model.Message;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.TreeItem;
 import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
+	@FXML
+	private Label labelName;
+	
+	private TreeItem<String> rootTreeItem; //temp
+	
     @FXML
     private JFXTreeView channelTreeView;
 
@@ -33,138 +41,66 @@ public class MainFormController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //TEST
-        ChannelVersionsManager.register("Hello", new Channel() {
-            @Override
-            public List<Interlocutor> getInterlocutors(ChannelEntity entity) {
-                return null;
-            }
-
-            @Override
-            public List<Message> getHistoryMessages(ChannelEntity entity, LocalDate upLimit) {
-                return null;
-            }
-
-            @Override
-            public boolean send(ChannelEntity entity, String data) {
-                return false;
-            }
-
-            @Override
-            public boolean save(ChannelEntity entity) {
-                return false;
-            }
-
-            @Override
-            public boolean load(ChannelEntity entity) {
-                return false;
-            }
-
-			@Override
-			public void connect(ChannelEntity entity) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void disconnect(ChannelEntity entity) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public boolean isConnection(ChannelEntity entity) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public ChannelEntity create(String channel_name, String owner_name) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public ChannelEntity join(String sid, String user_name) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-        });
-        ChannelVersionsManager.register("Byte", new Channel() {
-            @Override
-            public List<Interlocutor> getInterlocutors(ChannelEntity entity) {
-                return null;
-            }
-
-            @Override
-            public List<Message> getHistoryMessages(ChannelEntity entity, LocalDate upLimit) {
-                return null;
-            }
-
-            @Override
-            public boolean send(ChannelEntity entity, String data) {
-                return false;
-            }
-
-            @Override
-            public boolean save(ChannelEntity entity) {
-                return false;
-            }
-
-            @Override
-            public boolean load(ChannelEntity entity) {
-                return false;
-            }
-
-			@Override
-			public void connect(ChannelEntity entity) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void disconnect(ChannelEntity entity) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public boolean isConnection(ChannelEntity entity) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public ChannelEntity create(String channel_name, String owner_name) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-
-			@Override
-			public ChannelEntity join(String sid, String user_name) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-        });
-        //TEST
-
-        versionsComboBox.getItems().addAll(ChannelVersionsManager.getVersions());
+        versionsComboBox.setItems(ChannelVersionsManager.getVersions());
+        
+        /**
+        this.labelName.setText(<Get user name form ROM>);
+        */
+        
+        this.rootTreeItem = new TreeItem<String>("Channels");
+        this.channelTreeView.setRoot(rootTreeItem);
     }
 
+    @FXML
+    private void onChangeName() {
+    	//System.out.print("asd");
+    	Optional<String> result = dialogChangeName.showAndWait();
+        if (result.isPresent()) {
+        	if (result.get().length() > 0)
+        	{
+        		/**
+                 * - Change name from ROM
+                 */
+        		this.labelName.setText(result.get());
+        	}
+        	else
+        	{
+        		/**
+        		 * - To inform the user
+        		 */
+        	}
+        }
+    }
+    
     public void onCreateChannelAction() {
         Channel channel = checkAndReturn();
         if (channel != null) {
-            ChannelEntity channelEntity = channel.create(channelTextField.getText(), "test");
+            ChannelEntity channelEntity = channel.create(channelTextField.getText(), this.labelName.getText() /** <Get user name form ROM> */);
+            addEntityChannelToViewTree(channelEntity);
         }
     }
 
     public void onConnectChannelAction() {
         Channel channel = checkAndReturn();
         if (channel != null) {
-            ChannelEntity channelEntity = channel.join(channelTextField.getText(), "test");
+            ChannelEntity channelEntity = channel.join(channelTextField.getText(), this.labelName.getText() /** <Get user name form ROM> */);
+            addEntityChannelToViewTree(channelEntity);
         }
     }
 
+    TextInputDialog dialogChangeName = new TextInputDialog("anonymous");
+    
+    private ObservableList<ChannelEntity> channelEntityList;
+    
+    private void addEntityChannelToViewTree(ChannelEntity ce) {
+    	/**
+    	 * - Working with hierarchy
+    	 * - Add to list
+    	 */
+    
+        rootTreeItem.getChildren().add(new TreeItem<>(ce.toString()));
+    }
+    
     private Channel checkAndReturn() {
         final boolean isTextEmpty = channelTextField.getText().isEmpty();
         final Object item = versionsComboBox.getSelectionModel().getSelectedItem();
@@ -179,5 +115,13 @@ public class MainFormController implements Initializable {
                 "OK", 5000, event -> snackbar.close());
 
         return null;
+    }
+    
+    public MainFormController() {
+    	channelEntityList = FXCollections.observableArrayList();
+    	
+        dialogChangeName.setTitle("Chane name");
+        dialogChangeName.setHeaderText(null);
+        dialogChangeName.setContentText("Please enter your name:");
     }
 }

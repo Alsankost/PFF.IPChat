@@ -2,9 +2,10 @@ package com.pff.ipchat;
 
 import com.pff.ipchat.chat.Channel;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public abstract class ChannelVersionsManager {
@@ -28,8 +29,8 @@ public abstract class ChannelVersionsManager {
 		return MAP.values().remove(channel);
 	}
 
-    public static List<String> getVersions() {
-        List<String> temp = new ArrayList<>();
+    public static ObservableList<String> getVersions() {
+    	ObservableList<String> temp = FXCollections.observableArrayList();
 		temp.addAll(MAP.keySet());
 		return (temp.size() > 0) ? temp : null;
  	}
