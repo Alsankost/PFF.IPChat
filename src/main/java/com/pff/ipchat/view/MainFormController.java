@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeView;
 import com.pff.ipchat.ChannelVersionsManager;
+import com.pff.ipchat.DataManager;
 import com.pff.ipchat.chat.Channel;
 import com.pff.ipchat.chat.ChannelEntity;
 
@@ -43,9 +44,12 @@ public class MainFormController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         versionsComboBox.setItems(ChannelVersionsManager.getVersions());
         
+        this.labelName.setText(DataManager.getUserName());
+        
         /**
-        this.labelName.setText(<Get user name form ROM>);
-        */
+         * set entity channel list on TreeView
+         * use DataManager.getChannelEntityList();
+         */
         
         this.rootTreeItem = new TreeItem<String>("Channels");
         this.channelTreeView.setRoot(rootTreeItem);
@@ -58,9 +62,7 @@ public class MainFormController implements Initializable {
         if (result.isPresent()) {
         	if (result.get().length() > 0)
         	{
-        		/**
-                 * - Change name from ROM
-                 */
+        		DataManager.setUserName(result.get());
         		this.labelName.setText(result.get());
         	}
         	else
