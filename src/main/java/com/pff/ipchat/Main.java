@@ -1,14 +1,13 @@
 package com.pff.ipchat;
 
+import com.pff.ipchat.model.channels.DummyChannel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
-import com.pff.ipchat.model.channels.DummyChannel;
 
 public class Main extends Application {
 
@@ -27,7 +26,7 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        BorderPane mainForm = FXMLLoader.load(Main.class.getResource("view/fxml/MainForm.fxml"));
+        StackPane mainForm = FXMLLoader.load(Main.class.getResource("view/fxml/MainForm.fxml"));
 
         Scene scene = new Scene(mainForm);
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+           minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111"
+           fx:controller="com.pff.ipchat.view.ChangeNameController">
+    <children>
+        <AnchorPane prefHeight="123.0" prefWidth="300.0">
+            <children>
+                <JFXTextField fx:id="nicknameTextField" layoutX="20.0" layoutY="60.0" onAction="#onAction"
+                              prefHeight="25.0" prefWidth="260.0" promptText="Enter you nickname"
+                              AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="20.0"
+                              AnchorPane.rightAnchor="20.0"/>
+                <JFXButton fx:id="cancelButton" layoutX="278.0" layoutY="80.0" onAction="#onCancelAction"
+                           prefHeight="25.0" prefWidth="52.0" text="Cancel" AnchorPane.bottomAnchor="10.0"
+                           AnchorPane.rightAnchor="20.0"/>
+                <JFXButton layoutX="239.0" layoutY="80.0" onAction="#onAction" prefHeight="20.0" prefWidth="32.0"
+                           text="Ok" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="80.0"/>
+                <Label layoutX="20.0" layoutY="14.0" text="Change name" AnchorPane.leftAnchor="20.0"
+                       AnchorPane.topAnchor="10.0">
+                    <font>
+                        <Font size="13.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

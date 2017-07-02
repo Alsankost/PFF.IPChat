@@ -12,10 +12,6 @@ public class ChannelEntity {
         this.name = builder.name;
     }
 
-    public String getSID() {
-        return sid;
-	}
-
     public static class Builder {
         private String sid;
         private String channel_version;
@@ -39,6 +35,10 @@ public class ChannelEntity {
         public ChannelEntity build() {
             return new ChannelEntity(this);
         }
+    }
+
+    public String getSID() {
+        return sid;
     }
 
     public String getChannelVersion() {

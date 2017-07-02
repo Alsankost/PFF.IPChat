@@ -1,0 +1,13 @@
+{
+  "username": "Example Name",
+  "groups": {
+    "exampleGroup1": [
+      {
+        "sid": "gf2k315k2",
+        "name": "Hello",
+        "channel_version": "DummyChannel",
+        "other_data": "Some data..."
+      }
+    ]
+  }
+}

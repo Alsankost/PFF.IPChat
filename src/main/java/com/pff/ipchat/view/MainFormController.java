@@ -1,25 +1,20 @@
 package com.pff.ipchat.view;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXSnackbar;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeView;
+import com.jfoenix.controls.*;
 import com.pff.ipchat.ChannelVersionsManager;
 import com.pff.ipchat.DataManager;
+import com.pff.ipchat.Main;
 import com.pff.ipchat.chat.Channel;
 import com.pff.ipchat.chat.ChannelEntity;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TreeItem;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MainFormController implements Initializable {
@@ -38,10 +33,24 @@ public class MainFormController implements Initializable {
     private JFXTextField channelTextField;
 
     @FXML
-    private BorderPane rootPane;
+    private StackPane rootPane;
+
+    @FXML
+    private JFXDialog changeNicknameDialog;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ComponentManager.labelName = labelName;
+        ComponentManager.changeNicknameDialog = changeNicknameDialog;
+
+        try {
+            StackPane stackChangeNicknamePane = FXMLLoader.load(
+                    Main.class.getResource("view/fxml/ChangeNameForm.fxml"));
+            changeNicknameDialog.setContent(stackChangeNicknamePane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         versionsComboBox.setItems(ChannelVersionsManager.getVersions());
         
         this.labelName.setText(DataManager.getUserName());
@@ -56,24 +65,11 @@ public class MainFormController implements Initializable {
     }
 
     @FXML
-    private void onChangeName() {
-    	//System.out.print("asd");
-    	Optional<String> result = dialogChangeName.showAndWait();
-        if (result.isPresent()) {
-        	if (result.get().length() > 0)
-        	{
-        		DataManager.setUserName(result.get());
-        		this.labelName.setText(result.get());
-        	}
-        	else
-        	{
-        		/**
-        		 * - To inform the user
-        		 */
-        	}
-        }
+    public void onChangeNicknameAction() {
+        changeNicknameDialog.show(rootPane);
     }
-    
+
+    @FXML
     public void onCreateChannelAction() {
         Channel channel = checkAndReturn();
         if (channel != null) {
@@ -82,6 +78,7 @@ public class MainFormController implements Initializable {
         }
     }
 
+    @FXML
     public void onConnectChannelAction() {
         Channel channel = checkAndReturn();
         if (channel != null) {
@@ -90,10 +87,6 @@ public class MainFormController implements Initializable {
         }
     }
 
-    TextInputDialog dialogChangeName = new TextInputDialog("anonymous");
-    
-    private ObservableList<ChannelEntity> channelEntityList;
-    
     private void addEntityChannelToViewTree(ChannelEntity ce) {
     	/**
     	 * - Working with hierarchy
@@ -117,13 +110,5 @@ public class MainFormController implements Initializable {
                 "OK", 5000, event -> snackbar.close());
 
         return null;
-    }
-    
-    public MainFormController() {
-    	channelEntityList = FXCollections.observableArrayList();
-    	
-        dialogChangeName.setTitle("Chane name");
-        dialogChangeName.setHeaderText(null);
-        dialogChangeName.setContentText("Please enter your name:");
     }
 }

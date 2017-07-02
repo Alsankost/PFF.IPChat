@@ -1,26 +1,9 @@
 package com.pff.ipchat.model.channels;
 
-import java.awt.BorderLayout;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.ListModel;
-import javax.swing.event.ListDataListener;
-
 import com.pff.ipchat.chat.Channel;
 import com.pff.ipchat.chat.ChannelEntity;
 import com.pff.ipchat.model.Interlocutor;
 import com.pff.ipchat.model.Message;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -31,6 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class is implementation of dummy channel for front-end testing
@@ -197,9 +185,9 @@ public class DummyChannel implements Channel {
 			.setSid(channel_name)
 			.setName(channel_name)
 			.build();
-		
-		Proxy p = new Proxy(temp, owner_name);
-		entity_map.put(channel_name, p);
+
+        Proxy p = new Proxy(temp, owner_name);
+        entity_map.put(channel_name, p);
 		
 		return temp;
 	}
