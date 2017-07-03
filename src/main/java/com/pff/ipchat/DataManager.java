@@ -26,6 +26,18 @@ public abstract class DataManager {
 		config.getGroups().forEach((name, entities) -> buffer.addAll(entities));
 		return buffer;
 	}
+	
+	public static List<String> getGroupNames() {
+		List<String> buffer = new ArrayList<>();
+		config.getGroups().forEach((name, entities) -> buffer.add(name));
+		return buffer;
+	}
+	
+	public static List<ChannelEntity> getChannelEntitysFromGroup(String group) {
+		List<ChannelEntity> buffer = new ArrayList<>();
+		buffer.addAll(config.getGroups().get(group));
+		return buffer;	 
+	}
 
 	public static void addGroup(String group) {
 		if (!config.getGroups().keySet().contains(group)) {
@@ -44,7 +56,7 @@ public abstract class DataManager {
 			config.getGroups().get(group).add(channelEntity);
 		}
 	}
-
+	
 	public static void moveChannelEntity(ChannelEntity ce, String groupName) {
 		if (config.getGroups().keySet().contains(groupName)) {
 			removeChannelEntity(ce);

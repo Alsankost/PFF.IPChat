@@ -17,6 +17,7 @@ public class Main extends Application {
     	//Registration channel versions
     	ChannelVersionsManager.register("Dummy Channel v0.0.1", new DummyChannel());
     	
+    	DataManager.load();
         launch(args);
     }
     
